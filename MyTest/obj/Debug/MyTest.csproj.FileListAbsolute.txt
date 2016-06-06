@@ -1,0 +1,10 @@
+F:\迅雷下载\MyControl\MyTest\bin\Debug\MyTest.exe
+F:\迅雷下载\MyControl\MyTest\bin\Debug\MyTest.pdb
+F:\迅雷下载\MyControl\MyTest\bin\Debug\MyControl.dll
+F:\迅雷下载\MyControl\MyTest\bin\Debug\MyControl.pdb
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.csprojResolveAssemblyReference.cache
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.Form1.resources
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.Properties.Resources.resources
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.csproj.GenerateResource.Cache
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.exe
+F:\迅雷下载\MyControl\MyTest\obj\Debug\MyTest.pdb

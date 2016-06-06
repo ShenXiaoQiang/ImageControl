@@ -1,0 +1,7 @@
+F:\迅雷下载\MyControl\MyControl\bin\Debug\MyControl.dll
+F:\迅雷下载\MyControl\MyControl\bin\Debug\MyControl.pdb
+F:\迅雷下载\MyControl\MyControl\obj\Debug\MyControl.UcImageView.resources
+F:\迅雷下载\MyControl\MyControl\obj\Debug\MyControl.csproj.GenerateResource.Cache
+F:\迅雷下载\MyControl\MyControl\obj\Debug\MyControl.dll
+F:\迅雷下载\MyControl\MyControl\obj\Debug\MyControl.pdb
+F:\迅雷下载\MyControl\MyControl\obj\Debug\MyControl.csprojResolveAssemblyReference.cache
