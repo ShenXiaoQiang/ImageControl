@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcImageView));
             this.PnlMain = new System.Windows.Forms.Panel();
             this.hScrollBarImageView = new System.Windows.Forms.HScrollBar();
-            this.mnuPrint = new System.Windows.Forms.CheckBox();
-            this.mnuMy = new System.Windows.Forms.CheckBox();
             this.picView = new System.Windows.Forms.PictureBox();
             this.vScrollBarImageView = new System.Windows.Forms.VScrollBar();
             this.printDocImageView = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialogImage = new System.Windows.Forms.PrintPreviewDialog();
+            this.lblScale = new System.Windows.Forms.Label();
+            this.tmrScaleShowTime = new System.Windows.Forms.Timer(this.components);
             this.PnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picView)).BeginInit();
             this.SuspendLayout();
@@ -47,9 +48,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PnlMain.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PnlMain.Controls.Add(this.lblScale);
             this.PnlMain.Controls.Add(this.hScrollBarImageView);
-            this.PnlMain.Controls.Add(this.mnuPrint);
-            this.PnlMain.Controls.Add(this.mnuMy);
             this.PnlMain.Controls.Add(this.picView);
             this.PnlMain.Location = new System.Drawing.Point(0, 0);
             this.PnlMain.Margin = new System.Windows.Forms.Padding(0);
@@ -69,30 +69,11 @@
             this.hScrollBarImageView.Visible = false;
             this.hScrollBarImageView.ValueChanged += new System.EventHandler(this.hScrollBarImageView_ValueChanged);
             // 
-            // mnuPrint
-            // 
-            this.mnuPrint.AutoSize = true;
-            this.mnuPrint.Location = new System.Drawing.Point(570, 303);
-            this.mnuPrint.Name = "mnuPrint";
-            this.mnuPrint.Size = new System.Drawing.Size(15, 14);
-            this.mnuPrint.TabIndex = 2;
-            this.mnuPrint.UseVisualStyleBackColor = true;
-            this.mnuPrint.Visible = false;
-            // 
-            // mnuMy
-            // 
-            this.mnuMy.AutoSize = true;
-            this.mnuMy.Location = new System.Drawing.Point(463, 305);
-            this.mnuMy.Name = "mnuMy";
-            this.mnuMy.Size = new System.Drawing.Size(78, 16);
-            this.mnuMy.TabIndex = 1;
-            this.mnuMy.Text = "checkBox1";
-            this.mnuMy.UseVisualStyleBackColor = true;
-            this.mnuMy.Visible = false;
-            this.mnuMy.CheckedChanged += new System.EventHandler(this.mnuMy_CheckedChanged);
-            // 
             // picView
             // 
+            this.picView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picView.Location = new System.Drawing.Point(0, 0);
             this.picView.Margin = new System.Windows.Forms.Padding(0);
@@ -132,6 +113,23 @@
             this.printPreviewDialogImage.Name = "printPreviewDialogImage";
             this.printPreviewDialogImage.Visible = false;
             // 
+            // lblScale
+            // 
+            this.lblScale.BackColor = System.Drawing.Color.Transparent;
+            this.lblScale.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblScale.ForeColor = System.Drawing.Color.White;
+            this.lblScale.Location = new System.Drawing.Point(197, 137);
+            this.lblScale.Name = "lblScale";
+            this.lblScale.Size = new System.Drawing.Size(250, 37);
+            this.lblScale.TabIndex = 5;
+            this.lblScale.Text = "100%";
+            this.lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblScale.Visible = false;
+            // 
+            // tmrScaleShowTime
+            // 
+            this.tmrScaleShowTime.Tick += new System.EventHandler(this.tmrScaleShowTime_Tick);
+            // 
             // UcImageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -143,7 +141,6 @@
             this.Size = new System.Drawing.Size(660, 343);
             this.Load += new System.EventHandler(this.UcImageView_Load);
             this.PnlMain.ResumeLayout(false);
-            this.PnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picView)).EndInit();
             this.ResumeLayout(false);
 
@@ -154,10 +151,10 @@
         private System.Windows.Forms.Panel PnlMain;
         private System.Windows.Forms.PictureBox picView;
         private System.Drawing.Printing.PrintDocument printDocImageView;
-        private System.Windows.Forms.CheckBox mnuPrint;
-        private System.Windows.Forms.CheckBox mnuMy;
         private System.Windows.Forms.VScrollBar vScrollBarImageView;
         private System.Windows.Forms.HScrollBar hScrollBarImageView;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogImage;
+        private System.Windows.Forms.Label lblScale;
+        private System.Windows.Forms.Timer tmrScaleShowTime;
     }
 }

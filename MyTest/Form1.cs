@@ -91,5 +91,10 @@ namespace MyTest
         {
             ucImageViewTest.PrintImage();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ucImageViewTest.ResetImage();
+        }
     }
 }
