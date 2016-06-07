@@ -46,9 +46,9 @@ namespace MyControl
         }
 
         private bool _mnuPrintVisible = false; //默认可见
-                                              ///<summary>
-                                              /// 确定打印菜单项是可见还是隐藏
-                                              ///</summary>
+                                               ///<summary>
+                                               /// 确定打印菜单项是可见还是隐藏
+                                               ///</summary>
         [Category("图片浏览"), Description("确定打印菜单项是可见还是隐藏"), Browsable(true)]
         public bool MnuPrintVisible
         {
@@ -265,7 +265,7 @@ namespace MyControl
         /// </summary>
         public void PrintImagePreview()
         {
-            if (picView.Image!=null)
+            if (picView.Image != null)
             {
                 //预览
                 this.printPreviewDialogImage.Document = printDocImageView;
@@ -278,7 +278,7 @@ namespace MyControl
         /// </summary>
         public void PrintImage()
         {
-            mnuPrint_Click(null,null);
+            mnuPrint_Click(null, null);
         }
 
         /// <summary>
@@ -566,6 +566,10 @@ namespace MyControl
         {
             StartP = e.Location;
             isMouseDown = true;
+            Bitmap img = MyControl.Properties.Resources.Hand_Down;
+            Cursor c = new Cursor(img.GetHicon());
+            picView.Cursor = c;
+            img.Dispose();
         }
 
         private void picView_MouseEnter(object sender, EventArgs e)
@@ -577,7 +581,14 @@ namespace MyControl
         {
             if (_mnuMoveImageChecked && isMouseDown)
             {
-                this.picView.Cursor = Cursors.SizeAll;
+                //change cursor
+                Bitmap img = MyControl.Properties.Resources.Hand_Down;
+                Cursor c = new Cursor(img.GetHicon());
+                picView.Cursor = c;
+                img.Dispose();
+
+
+                //this.picView.Cursor = Cursors.SizeAll;
                 //计算出移动后两个滚动条应该的Value
                 int x = -picView.Left + StartP.X - e.X;
                 int y = -picView.Top + StartP.Y - e.Y;
@@ -635,13 +646,21 @@ namespace MyControl
             }
             else
             {
-                this.picView.Cursor = Cursors.Default;
+                Bitmap img = MyControl.Properties.Resources.Hand_Move;
+                Cursor c = new Cursor(img.GetHicon());
+                picView.Cursor = c;
+                img.Dispose();
+                //this.picView.Cursor = Cursors.Default;
             }
         }
 
         private void picView_MouseUp(object sender, MouseEventArgs e)
         {
             isMouseDown = false;
+            Bitmap img = MyControl.Properties.Resources.Hand_Move;
+            Cursor c = new Cursor(img.GetHicon());
+            picView.Cursor = c;
+            img.Dispose();
         }
         #endregion
 
@@ -778,15 +797,15 @@ namespace MyControl
                 //RectangleF rectf = new RectangleF(ppea.MarginBounds.Left, ppea.MarginBounds.Top, ppea.MarginBounds.Width, ppea.MarginBounds.Height);
                 //A4
                 float c_width = e.MarginBounds.Width / picView.Image.Width;
-                float c_height =  e.MarginBounds.Height/ picView.Image.Height ;
-                RectangleF rectf=new RectangleF();
+                float c_height = e.MarginBounds.Height / picView.Image.Height;
+                RectangleF rectf = new RectangleF();
                 //if (c_width > c_height)
                 //{
                 //    if (c_height > 1)
                 //    {
                 //        rectf = new RectangleF(0, 0, e.MarginBounds.Width + 200, e.MarginBounds.Height + 200);
                 //    }
-                    rectf = new RectangleF(0, 0, e.MarginBounds.Width + 200, e.MarginBounds.Height + 200);
+                rectf = new RectangleF(0, 0, e.MarginBounds.Width + 200, e.MarginBounds.Height + 200);
                 //}
                 //else
                 //{

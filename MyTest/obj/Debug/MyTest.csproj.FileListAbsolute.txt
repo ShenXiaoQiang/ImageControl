@@ -18,3 +18,13 @@ F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Debug\MyTest.csprojResolveAsse
 F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Debug\MyTest.Form1.resources
 F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Debug\MyTest.Properties.Resources.resources
 F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Debug\MyTest.csproj.GenerateResource.Cache
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.exe
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.pdb
+H:\大迈科技\ImageControl\trunk\MyTest\bin\Debug\MyTest.exe
+H:\大迈科技\ImageControl\trunk\MyTest\bin\Debug\MyTest.pdb
+H:\大迈科技\ImageControl\trunk\MyTest\bin\Debug\MyControl.dll
+H:\大迈科技\ImageControl\trunk\MyTest\bin\Debug\MyControl.pdb
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.csprojResolveAssemblyReference.cache
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.Form1.resources
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.Properties.Resources.resources
+H:\大迈科技\ImageControl\trunk\MyTest\obj\Debug\MyTest.csproj.GenerateResource.Cache
