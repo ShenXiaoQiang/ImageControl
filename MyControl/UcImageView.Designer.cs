@@ -1,4 +1,4 @@
-﻿namespace MyControl
+﻿namespace ImageViewControl
 {
     partial class UcImageView
     {
@@ -54,19 +54,18 @@
             this.PnlMain.Location = new System.Drawing.Point(0, 0);
             this.PnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.PnlMain.Name = "PnlMain";
-            this.PnlMain.Size = new System.Drawing.Size(880, 430);
+            this.PnlMain.Size = new System.Drawing.Size(660, 344);
             this.PnlMain.TabIndex = 0;
             this.PnlMain.Resize += new System.EventHandler(this.PnlMain_Resize);
             // 
             // lblScale
             // 
             this.lblScale.BackColor = System.Drawing.Color.Transparent;
-            this.lblScale.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblScale.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblScale.ForeColor = System.Drawing.Color.White;
-            this.lblScale.Location = new System.Drawing.Point(263, 171);
-            this.lblScale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblScale.Location = new System.Drawing.Point(197, 137);
             this.lblScale.Name = "lblScale";
-            this.lblScale.Size = new System.Drawing.Size(333, 46);
+            this.lblScale.Size = new System.Drawing.Size(250, 37);
             this.lblScale.TabIndex = 5;
             this.lblScale.Text = "100%";
             this.lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,23 +75,20 @@
             // 
             this.hScrollBarImageView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScrollBarImageView.Location = new System.Drawing.Point(3, 406);
+            this.hScrollBarImageView.Location = new System.Drawing.Point(2, 325);
             this.hScrollBarImageView.Name = "hScrollBarImageView";
-            this.hScrollBarImageView.Size = new System.Drawing.Size(845, 17);
+            this.hScrollBarImageView.Size = new System.Drawing.Size(634, 17);
             this.hScrollBarImageView.TabIndex = 3;
             this.hScrollBarImageView.Visible = false;
             this.hScrollBarImageView.ValueChanged += new System.EventHandler(this.hScrollBarImageView_ValueChanged);
             // 
             // picView
             // 
-            this.picView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.picView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picView.Location = new System.Drawing.Point(0, 0);
             this.picView.Margin = new System.Windows.Forms.Padding(0);
             this.picView.Name = "picView";
-            this.picView.Size = new System.Drawing.Size(852, 404);
+            this.picView.Size = new System.Drawing.Size(639, 323);
             this.picView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picView.TabIndex = 0;
             this.picView.TabStop = false;
@@ -104,10 +100,11 @@
             // 
             // vScrollBarImageView
             // 
-            this.vScrollBarImageView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.vScrollBarImageView.Location = new System.Drawing.Point(853, 5);
+            this.vScrollBarImageView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.vScrollBarImageView.Location = new System.Drawing.Point(640, 4);
             this.vScrollBarImageView.Name = "vScrollBarImageView";
-            this.vScrollBarImageView.Size = new System.Drawing.Size(17, 399);
+            this.vScrollBarImageView.Size = new System.Drawing.Size(17, 319);
             this.vScrollBarImageView.TabIndex = 4;
             this.vScrollBarImageView.Visible = false;
             this.vScrollBarImageView.ValueChanged += new System.EventHandler(this.vScrollBarImageView_ValueChanged);
@@ -133,14 +130,13 @@
             // 
             // UcImageView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.vScrollBarImageView);
             this.Controls.Add(this.PnlMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UcImageView";
-            this.Size = new System.Drawing.Size(880, 429);
+            this.Size = new System.Drawing.Size(660, 343);
             this.Load += new System.EventHandler(this.UcImageView_Load);
             this.PnlMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picView)).EndInit();

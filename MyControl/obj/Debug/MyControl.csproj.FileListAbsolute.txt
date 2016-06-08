@@ -19,3 +19,5 @@ H:\大迈科技\ImageControl\trunk\MyControl\obj\Debug\MyControl.UcImageView.res
 H:\大迈科技\ImageControl\trunk\MyControl\obj\Debug\MyControl.csproj.GenerateResource.Cache
 H:\大迈科技\ImageControl\trunk\MyControl\obj\Debug\MyControl.dll
 H:\大迈科技\ImageControl\trunk\MyControl\obj\Debug\MyControl.pdb
+F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Debug\MyControl.csprojResolveAssemblyReference.cache
+F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Debug\MyControl.Properties.Resources.resources

@@ -1,14 +1,13 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("MyControl")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ImageViewControl")]
+[assembly: AssemblyDescription("用于图片浏览")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("深圳市大迈信息科技有限公司")]
 [assembly: AssemblyProduct("MyControl")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

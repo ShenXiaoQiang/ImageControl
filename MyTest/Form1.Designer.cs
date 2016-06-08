@@ -41,7 +41,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.ucImageViewTest = new MyControl.UcImageView();
+            this.ucImageViewTest = new ImageViewControl.UcImageView();
             this.SuspendLayout();
             // 
             // button1
@@ -221,7 +221,7 @@
 
         #endregion
 
-        private MyControl.UcImageView ucImageViewTest;
+        private ImageViewControl.UcImageView ucImageViewTest;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

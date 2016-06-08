@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 
-namespace MyControl
+namespace ImageViewControl
 {
     public partial class UcImageView : UserControl
     {
@@ -24,14 +24,16 @@ namespace MyControl
         private int m_VBarWidth;//垂直滚动条宽度
         private int m_HBarHeight;//水平滚动条比例
         private int m_BorderWidth = 0;//设置滚动条，靠边的父窗体边框，无则为0
+        private Cursor c_HandDown = null;
+        private Cursor c_HandMove = null;
         #endregion
 
         #region 公共属性
-        private bool _mnuMoveImageChecked;
+        private bool _mnuMoveImageChecked = false;
         ///<summary>
         /// 确定漫游菜单项是否处于选中状态(用于是否可以移动或漫游图片)
         ///</summary>
-        [Category("图片浏览"), Description("确定漫游菜单项是否处于选中状态(用于是否可以移动或漫游图片)"), Browsable(false)]
+        [Category("图片浏览"), Description("确定漫游菜单项是否处于选中状态(用于是否可以移动或漫游图片)"), Browsable(true)]
         public bool MnuMoveImageChecked
         {
             get
@@ -182,7 +184,7 @@ namespace MyControl
                     imgScale = MAX_SCALE;
                 else
                     imgScale = imgScale + SCALE_DIFF;
-                zoom(picView.Location, imgScale);
+                zoom(imgScale);
                 //CenterImage();
             }
         }
@@ -207,7 +209,7 @@ namespace MyControl
                     imgScale = MIN_SCALE;
                 else
                     imgScale = imgScale - SCALE_DIFF;
-                zoom(picView.Location, imgScale);
+                zoom(imgScale);
                 //CenterImage();
             }
         }
@@ -220,7 +222,7 @@ namespace MyControl
             if (picView.Image != null)
             {
                 ImageChange();
-                this.picView.Cursor = Cursors.Default;
+                this.picView.Cursor = c_HandMove;
                 CenterImage();
                 setScrllBars();
             }
@@ -306,16 +308,47 @@ namespace MyControl
         }
 
         #region 图片缩放
+
+        private Point GetCenterPoint()
+        {
+            int x = 0, y = 0;
+            if (picView.Left < 0)
+            {
+                if (picView.Width + picView.Left >= PnlMain.Width)
+                {
+                    x = -picView.Left + PnlMain.Width / 2;
+                }
+
+            }
+            else
+            {
+                if (picView.Width <= PnlMain.Width)
+                    x = -picView.Left + PnlMain.Width / 2;
+            }
+            if (picView.Top < 0)
+            {
+                if (picView.Height + picView.Top >= PnlMain.Height)
+                {
+                    y = -picView.Top + PnlMain.Height / 2;
+                }
+            }
+            else
+            {
+                if (picView.Height <= PnlMain.Height)
+                    y = -picView.Top + PnlMain.Height / 2;
+            }
+            return new Point(x, y);
+        }
         ///<summary>
         /// 图片缩放
         ///</summary>
         ///<param name="center">缩放中心点</param>
         ///<param name="zoomIndexBy1000">缩放倍率的1000倍</param>
-        private void zoom(Point center, int zoomIndexBy1000)
+        private void zoom(int zoomIndexBy1000)
         {
             //记录原始的picView的Size
             Point oldSize = new Point(picView.Width, picView.Height);
-            //实施放大（以x方向为基准计算得出y方向大小，防止多次运算误差积累使Image和picView的尺寸不匹配）
+            Point center = GetCenterPoint();            //实施放大（以x方向为基准计算得出y方向大小，防止多次运算误差积累使Image和picView的尺寸不匹配）
             int z_w = w * zoomIndexBy1000 / 1000;
             int z_h = z_w * imgIndexBy1000 / 1000;
             picView.Width = z_w == 0 ? 1 : z_w;
@@ -468,7 +501,7 @@ namespace MyControl
                 imgScale = MAX_SCALE;
             else
                 imgScale = m_scale;
-            zoom(picView.Location, imgScale);
+            zoom(imgScale);
             //    SizeF curSize = new SizeF(cx, cx);
             //this.picView.Scale(curSize);
 
@@ -489,27 +522,27 @@ namespace MyControl
             if (picView.Width <= PnlMain.Width) //图片左右居中
             {
                 picView.Left = (PnlMain.Width - picView.Width) / 2;
-                hScrollBarImageView.Visible = false;
+                //hScrollBarImageView.Visible = false;
             }
             else if (picView.Left < 0 && picView.Width + picView.Left < PnlMain.Width)//图片靠右
             {
                 picView.Left = PnlMain.Width - picView.Width;
-                hScrollBarImageView.Visible = true;
+                //hScrollBarImageView.Visible = true;
             }
             else if (picView.Left > 0 && picView.Width + picView.Left > PnlMain.Width)//图片靠左
             {
                 picView.Left = 0;
-                hScrollBarImageView.Visible = true;
+                //hScrollBarImageView.Visible = true;
             }
             else//保证显示的中心图样不变（左右）
             {
                 picView.Left += (PnlMain.Width - panelOldSize.X) / 2;
-                hScrollBarImageView.Visible = true;
+                //hScrollBarImageView.Visible = true;
             }
             //设定横向滚动条最大值
-            hScrollBarImageView.Maximum = (picView.Width - PnlMain.Width > 0 ? picView.Width - PnlMain.Width + hScrollBarImageView.Maximum + 2 : 0);
+            //hScrollBarImageView.Maximum = (picView.Width - PnlMain.Width > 0 ? picView.Width - PnlMain.Width + hScrollBarImageView.Maximum + 2 : 0);
             //设定横向滚动条Value
-            hScrollBarImageView.Value = (picView.Left >= 0 ? 0 : -picView.Left);
+            //hScrollBarImageView.Value = (picView.Left >= 0 ? 0 : -picView.Left);
             //重置旧的pannel1的Width
             panelOldSize.X = PnlMain.Width;
 
@@ -517,28 +550,29 @@ namespace MyControl
             if (picView.Height <= PnlMain.Height)//图片上下居中
             {
                 picView.Top = (PnlMain.Height - picView.Height) / 2;
-                vScrollBarImageView.Visible = false;
+                //vScrollBarImageView.Visible = false;
             }
             else if (picView.Top < 0 && picView.Height + picView.Top < PnlMain.Height)//图片靠下
             {
                 picView.Top = PnlMain.Height - picView.Height;
-                vScrollBarImageView.Visible = true;
+                //vScrollBarImageView.Visible = true;
             }
             else if (picView.Top > 0 && picView.Height + picView.Top > PnlMain.Height)//图片靠上
             {
                 picView.Top = 0;
-                vScrollBarImageView.Visible = true;
+                //vScrollBarImageView.Visible = true;
             }
             else//保证显示的中心图样不变（上下）
             {
                 picView.Top += (PnlMain.Height - panelOldSize.Y) / 2;
-                vScrollBarImageView.Visible = true;
+                //vScrollBarImageView.Visible = true;
             }
             //设定纵向滚动条最大值
-            vScrollBarImageView.Maximum = (picView.Height - PnlMain.Height > 0 ? picView.Height - PnlMain.Height + vScrollBarImageView.Maximum + 2 : 0);
+            //vScrollBarImageView.Maximum = (picView.Height - PnlMain.Height > 0 ? picView.Height - PnlMain.Height + vScrollBarImageView.Maximum + 2 : 0);
             //设定纵向滚动条Value
-            vScrollBarImageView.Value = (picView.Top >= 0 ? 0 : -picView.Top);
+            //vScrollBarImageView.Value = (picView.Top >= 0 ? 0 : -picView.Top);
             //重置旧的pannel1的Height
+            setScrllBars();
             panelOldSize.Y = PnlMain.Height;
             //保持提示信息居中
             lblScale.Top = (PnlMain.Height - lblScale.Height) / 2;
@@ -566,10 +600,7 @@ namespace MyControl
         {
             StartP = e.Location;
             isMouseDown = true;
-            Bitmap img = MyControl.Properties.Resources.Hand_Down;
-            Cursor c = new Cursor(img.GetHicon());
-            picView.Cursor = c;
-            img.Dispose();
+            picView.Cursor = c_HandDown;
         }
 
         private void picView_MouseEnter(object sender, EventArgs e)
@@ -582,11 +613,7 @@ namespace MyControl
             if (_mnuMoveImageChecked && isMouseDown)
             {
                 //change cursor
-                Bitmap img = MyControl.Properties.Resources.Hand_Down;
-                Cursor c = new Cursor(img.GetHicon());
-                picView.Cursor = c;
-                img.Dispose();
-
+                picView.Cursor = c_HandDown;
 
                 //this.picView.Cursor = Cursors.SizeAll;
                 //计算出移动后两个滚动条应该的Value
@@ -620,47 +647,40 @@ namespace MyControl
 
 
                 /*****************************************************
-                                 * 给予调整滚动条调整图片位置
-                                 *****************************************************
+                * 给予调整滚动条调整图片位置
+                *****************************************************
                                 计算出移动后两个滚动条应该的Value*/
                 /*int w = hScrollBarImageView.Value + StartP.X -e.X;
-                                int z = vScrollBarImageView.Value + StartP.Y -e.Y;
-                                如果滚动条的value有效则执行操作；
-                                否则将滚动条按不同情况拉到两头
-                                if (w >= 0 && w <= hScrollBarImageView.Maximum)
-                                {
-                                    hScrollBarImageView.Value = w;
-                                }
-                                else
-                                {
-                                    hScrollBarImageView.Value = (w < 0 ? 0 : hScrollBarImageView.Maximum);
-                                }
-                                if (z >= 0 && z <= vScrollBarImageView.Maximum)
-                                {
-                                    vScrollBarImageView.Value = z;
-                                }
-                                else
-                                {
-                                    vScrollBarImageView.Value = (z < 0 ? 0 : vScrollBarImageView.Maximum);
-                                }*/
+                int z = vScrollBarImageView.Value + StartP.Y -e.Y;
+                如果滚动条的value有效则执行操作；
+                否则将滚动条按不同情况拉到两头
+                if (w >= 0 && w <= hScrollBarImageView.Maximum)
+                {
+                    hScrollBarImageView.Value = w;
+                }
+                else
+                {
+                    hScrollBarImageView.Value = (w < 0 ? 0 : hScrollBarImageView.Maximum);
+                }
+                if (z >= 0 && z <= vScrollBarImageView.Maximum)
+                {
+                    vScrollBarImageView.Value = z;
+                }
+                else
+                {
+                    vScrollBarImageView.Value = (z < 0 ? 0 : vScrollBarImageView.Maximum);
+                }*/
             }
             else
             {
-                Bitmap img = MyControl.Properties.Resources.Hand_Move;
-                Cursor c = new Cursor(img.GetHicon());
-                picView.Cursor = c;
-                img.Dispose();
-                //this.picView.Cursor = Cursors.Default;
+                picView.Cursor = c_HandMove;
             }
         }
 
         private void picView_MouseUp(object sender, MouseEventArgs e)
         {
             isMouseDown = false;
-            Bitmap img = MyControl.Properties.Resources.Hand_Move;
-            Cursor c = new Cursor(img.GetHicon());
-            picView.Cursor = c;
-            img.Dispose();
+            picView.Cursor = c_HandMove;
         }
         #endregion
 
@@ -835,7 +855,11 @@ namespace MyControl
         private void UcImageView_Load(object sender, EventArgs e)
         {
             PnlMain.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.picView_MouseWheel);
-
+            Bitmap img = ImageViewControl.Properties.Resources.Hand_Move;
+            c_HandMove = new Cursor(img.GetHicon());
+            img = ImageViewControl.Properties.Resources.Hand_Down;
+            c_HandDown = new Cursor(img.GetHicon());
+            img.Dispose();
         }
         #endregion
 

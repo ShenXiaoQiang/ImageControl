@@ -30,7 +30,7 @@ namespace MyTest
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            openImgDlg.Filter = "Image Files(*.jpg;*.jpeg;*.tiff;*.gif)|*.jpg;*.gpeg;*.tiff;*.gif|All files (*.*)|*.*";//图片文件的类型
+            openImgDlg.Filter = "Image Files(*.jpg;*.jpeg;*.tiff;*.gif;*.png)|*.jpg;*.gpeg;*.tiff;*.gif;*.png|All files (*.*)|*.*";//图片文件的类型
             if (openImgDlg.ShowDialog() == DialogResult.OK)
             {
                 string FileName, pathName;

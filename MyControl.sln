@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyControl", "MyControl\MyControl.csproj", "{0FB7E9A3-6C22-404E-A19E-8AD2ABBB7BF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageViewControl", "MyControl\ImageViewControl.csproj", "{0FB7E9A3-6C22-404E-A19E-8AD2ABBB7BF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTest", "MyTest\MyTest.csproj", "{0BF3489C-DB7B-4B1F-9D2A-B98541D821F5}"
 EndProject
