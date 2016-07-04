@@ -5,3 +5,4 @@ F:\迅雷下载\MyControl\ImageControl\MyControl\bin\Debug\ImageViewControl.dll
 F:\迅雷下载\MyControl\ImageControl\MyControl\bin\Debug\ImageViewControl.pdb
 F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Debug\ImageViewControl.dll
 F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Debug\ImageViewControl.pdb
+F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Debug\ImageViewControl.csprojResolveAssemblyReference.cache

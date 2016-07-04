@@ -1,0 +1,10 @@
+F:\迅雷下载\MyControl\ImageControl\MyTest\bin\Release\MyTest.exe
+F:\迅雷下载\MyControl\ImageControl\MyTest\bin\Release\MyTest.pdb
+F:\迅雷下载\MyControl\ImageControl\MyTest\bin\Release\ImageViewControl.dll
+F:\迅雷下载\MyControl\ImageControl\MyTest\bin\Release\ImageViewControl.pdb
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.csprojResolveAssemblyReference.cache
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.Form1.resources
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.Properties.Resources.resources
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.csproj.GenerateResource.Cache
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.exe
+F:\迅雷下载\MyControl\ImageControl\MyTest\obj\Release\MyTest.pdb

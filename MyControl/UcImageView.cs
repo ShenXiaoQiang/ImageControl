@@ -26,6 +26,7 @@ namespace ImageViewControl
         private int m_BorderWidth = 0;//设置滚动条，靠边的父窗体边框，无则为0
         private Cursor c_HandDown = null;
         private Cursor c_HandMove = null;
+        private int rotateType = 0;
         #endregion
 
         #region 公共属性
@@ -244,8 +245,55 @@ namespace ImageViewControl
             if (picView.Image != null)
             {
                 picView.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                rotateType--;
                 picView.Refresh();
-                CenterImage();
+                if (Math.Abs(rotateType) % 2 == 1)
+                {
+                    if (picView.Width > picView.Height)
+                    {
+                        int newHeight = picView.Height;
+                        int newWidth = newHeight * picView.Height / picView.Width;
+                        if (picView.Width > newWidth)
+                        {
+                            picView.Left = PnlMain.Width / 2 - picView.Width / 2;
+                            hScrollBarImageView.Value = -picView.Left;
+                        }
+                        else
+                            picView.Left = picBorderWidth;
+                        if (picView.Height > newHeight)
+                        {
+                            picView.Top = PnlMain.Height / 2 - picView.Height / 2;
+                            vScrollBarImageView.Value = -picView.Top;
+                        }
+                        else
+                            picView.Top = picBorderWidth;
+                    }
+                    else
+                    {
+                        int newWidth = picView.Width;
+                        int newHeight = newWidth * picView.Width / picView.Height;
+                        if (picView.Width > newWidth)
+                        {
+                            picView.Left = PnlMain.Width / 2 - picView.Width / 2;
+                            hScrollBarImageView.Value = -picView.Left;
+                        }
+                        else
+                            picView.Left = picBorderWidth;
+                        if (picView.Height > newHeight)
+                        {
+                            picView.Top = PnlMain.Height / 2 - picView.Height / 2;
+                            vScrollBarImageView.Value = -picView.Top;
+                        }
+                        else
+                            picView.Top = picBorderWidth;
+                    }
+                }
+                else
+                {
+                    hScrollBarImageView.Value = 0;
+                    vScrollBarImageView.Value = 0;
+                }
+                //CenterImage();
             }
         }
 
@@ -257,8 +305,54 @@ namespace ImageViewControl
             if (picView.Image != null)
             {
                 picView.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                rotateType++;
                 picView.Refresh();
-                CenterImage();
+                if (Math.Abs(rotateType) % 2 == 1)
+                {
+                    if (picView.Width > picView.Height)
+                    {
+                        int newHeight = picView.Height;
+                        int newWidth = newHeight * picView.Height / picView.Width;
+                        if (picView.Width > newWidth)
+                        {
+                            picView.Left = PnlMain.Width / 2 - picView.Width / 2;
+                            hScrollBarImageView.Value = -picView.Left;
+                        }
+                        else
+                            picView.Left = picBorderWidth;
+                        if (picView.Height > newHeight)
+                        { 
+                            picView.Top = PnlMain.Height / 2 - picView.Height / 2;
+                            vScrollBarImageView.Value = -picView.Top;
+                        }
+                        else
+                            picView.Top = picBorderWidth;
+                    }
+                    else
+                    {
+                        int newWidth =  picView.Width;
+                        int newHeight = newWidth * picView.Width / picView.Height;
+                        if (picView.Width > newWidth)
+                        {
+                            picView.Left = PnlMain.Width / 2 - picView.Width / 2;
+                            hScrollBarImageView.Value = -picView.Left;
+                        }
+                        else
+                            picView.Left = picBorderWidth;
+                        if (picView.Height > newHeight)
+                        {
+                            picView.Top = PnlMain.Height / 2 - picView.Height / 2;
+                            vScrollBarImageView.Value = -picView.Top;
+                        }
+                        else
+                            picView.Top = picBorderWidth;
+                    }
+                }else
+                {
+                    hScrollBarImageView.Value = 0;
+                    vScrollBarImageView.Value = 0;
+                }
+                //CenterImage();
             }
         }
 
@@ -288,8 +382,24 @@ namespace ImageViewControl
         /// </summary>
         public void ResetImage()
         {
+            switch (Math.Abs(rotateType) % 4)
+            {
+                case 1:
+                    picView.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    break;
+                case 2:
+                    picView.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    break;
+                case 3:
+                    picView.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    break;
+                default:
+                    break;
+            }
             picView.Width = picView.Image.Width;
             picView.Height = picView.Image.Height;
+            //picView.Image.RotateFlip();
+            
             CenterImage();
             setScrllBars();
             imgScale = 1000;
@@ -394,7 +504,7 @@ namespace ImageViewControl
         {
             //ImageChange();//得到最适合显示的图片尺寸
             imgScale = 1000;
-
+            rotateType = 0;
             //设定图片位置
             picView.Location = new Point(0, 0);
             //设定图片初始尺寸
