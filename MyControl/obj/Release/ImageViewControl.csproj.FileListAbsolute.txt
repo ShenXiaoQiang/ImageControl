@@ -5,3 +5,4 @@ F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Release\ImageViewControl.Uc
 F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Release\ImageViewControl.csproj.GenerateResource.Cache
 F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Release\ImageViewControl.dll
 F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Release\ImageViewControl.pdb
+F:\迅雷下载\MyControl\ImageControl\MyControl\obj\Release\ImageViewControl.csprojResolveAssemblyReference.cache
