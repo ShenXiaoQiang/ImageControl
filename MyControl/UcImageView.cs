@@ -121,7 +121,15 @@ namespace ImageViewControl
             }
             else
             {
-                picView.Image = Image.FromFile(fileName);//载入图片
+                if (picView.Image != null)
+                {
+                    picView.Image.Dispose();
+                    picView.Image = null;
+                }
+                Image img= Image.FromFile(fileName);//载入图片
+                Bitmap bmp = new Bitmap(img);
+                img.Dispose();
+                picView.Image = bmp;//载入图片
             }
 
             InitialImage();
@@ -136,6 +144,11 @@ namespace ImageViewControl
         {
             if (img != null)
             {
+                if (picView.Image != null)
+                {
+                    picView.Image.Dispose();
+                    picView.Image = null;
+                }
                 picView.Image = img;
                 InitialImage();
             }
