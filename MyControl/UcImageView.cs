@@ -121,11 +121,7 @@ namespace ImageViewControl
             }
             else
             {
-                if (picView.Image != null)
-                {
-                    picView.Image.Dispose();
-                    picView.Image = null;
-                }
+                Clear();
                 Image img= Image.FromFile(fileName);//载入图片
                 Bitmap bmp = new Bitmap(img);
                 img.Dispose();
@@ -144,11 +140,7 @@ namespace ImageViewControl
         {
             if (img != null)
             {
-                if (picView.Image != null)
-                {
-                    picView.Image.Dispose();
-                    picView.Image = null;
-                }
+                Clear();
                 picView.Image = img;
                 InitialImage();
             }
@@ -158,6 +150,18 @@ namespace ImageViewControl
             }
         }
         #endregion
+
+        /// <summary>
+        /// 清空图片容器
+        /// </summary>
+        public void Clear()
+        {
+            if (picView.Image != null)
+            {
+                picView.Image.Dispose();
+                picView.Image = null;
+            }
+        }
 
         #region 得到ImageView中的图片:Image GetImageInImageView()
         ///<summary>
@@ -320,28 +324,31 @@ namespace ImageViewControl
         /// </summary>
         public void ResetImage()
         {
-            switch (Math.Abs(rotateType) % 4)
+            if (picView.Image != null)
             {
-                case 1:
-                    picView.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                    break;
-                case 2:
-                    picView.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                    break;
-                case 3:
-                    picView.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                    break;
-                default:
-                    break;
+                switch (Math.Abs(rotateType) % 4)
+                {
+                    case 1:
+                        picView.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                        break;
+                    case 2:
+                        picView.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                        break;
+                    case 3:
+                        picView.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                        break;
+                    default:
+                        break;
+                }
+                picView.Width = picView.Image.Width;
+                picView.Height = picView.Image.Height;
+                //picView.Image.RotateFlip();
+
+                CenterImage();
+                setScrllBars();
+                imgScale = 1000;
+                ShowNotify("100%");
             }
-            picView.Width = picView.Image.Width;
-            picView.Height = picView.Image.Height;
-            //picView.Image.RotateFlip();
-            
-            CenterImage();
-            setScrllBars();
-            imgScale = 1000;
-            ShowNotify("100%");
         }
         #endregion
 
