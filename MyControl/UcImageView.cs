@@ -469,6 +469,9 @@ namespace ImageViewControl
             //    vScrollBarImageView.Maximum = picView.Height - PnlMain.Height + hScrollBarImageView.Height + 2;//+ vScrollBarImageView.LargeChange
             //    vScrollBarImageView.Visible = true;
             //}
+            //显示标志决定滚动条的可见性
+            this.vScrollBarImageView.Value = 0;
+            this.hScrollBarImageView.Value = 0;
             setScrllBars();
             CenterImage();
         }
